@@ -12,7 +12,13 @@ _.forEach(Array.from(year.by('months')), month => {
     console.log('S   M   T   W   Th  F   S   ')
 
     let monthRange = month.range('month')
-    let firstDay = monthRange.start.day()
+    let firstDay = monthRange.start.day() 
+    let lastDay = monthRange.end.day() // playing with the features 
 
-    console.log(firstDay)
+    let  days = monthRange.by(month.range('months').by('days')) // trying to get the length of the month
+    let padDays = _.map(days, day => { 
+        let date = day.date()
+    }) 
+
+    console.log(firstDay, lastDay, padDays)
 })
