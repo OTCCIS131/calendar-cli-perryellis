@@ -18,14 +18,20 @@ for(const month of year. by('month'))
     let monthRange = month.range('month')
     let firstDay = monthRange.start.day() 
 
+    const chunkSize = 7;
+
     let days =  Array.from(month.range('month').by('days'))
     let paddedDays = _.map(days, day => {
         let date = day.date()
         
-       
-        if (day.month() == 9 && day.date() == 10) {
+        if (day.month() == 8 && day.date() == 10) {
             date = chalk.red(date)
         }
+        if (day.month() == 2 && day.date() == 5) {
+            date = chalk.green(date)
+        }
+
+
         
       if(firstDay == 0){
         return _.padEnd(date, 0, ' ')
@@ -48,12 +54,8 @@ for(const month of year. by('month'))
       else if(firstDay == 6){
         return _.padStart(date, 23, ' ')
       }
-      
+
     })
-
-
-
-    
 
     console.log(paddedDays, firstDay)
 }
