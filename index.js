@@ -1,24 +1,59 @@
-const M = require('moment')
-const _ = require('lodash')
+const _ = require("lodash")
+const M = require("moment")
 const chalk = require('chalk')
 const MomentRange = require('moment-range')
+
 
 const moment = MomentRange.extendMoment(M)
 
 let year = moment().range('year')
 
-_.forEach(Array.from(year.by('months')), month => {
-    console.log(_.pad(month.format('MMMM'), 26, ' '))
-    console.log('S   M   T   W   Th  F   S   ')
+
+
+for(const month of year. by('month'))
+{
+    console.log(_.pad(month.format('MMMM'), 26, '-'))
+    console.log('S   M   T   W   Th   F   S ')
 
     let monthRange = month.range('month')
     let firstDay = monthRange.start.day() 
-    let lastDay = monthRange.end.day() // playing with the features 
 
-    let  days = monthRange.by(month.range('months').by('days')) // trying to get the length of the month
-    let padDays = _.map(days, day => { 
+    let days =  Array.from(month.range('month').by('days'))
+    let paddedDays = _.map(days, day => {
         let date = day.date()
-    }) 
+        
+       
+        if (day.month() == 9 && day.date() == 10) {
+            date = chalk.red(date)
+        }
+        
+      if(firstDay == 0){
+        return _.padEnd(date, 0, ' ')
+      }
+      else if(firstDay == 1){
+        return _.padStart(date, 2, ' ')
+      }
+      else if(firstDay == 2){
+        return _.padStart(date, 6, ' ')
+      }
+      else if(firstDay == 3){
+        return _.padStart(date, 10, ' ')
+      }
+      else if(firstDay == 4){
+        return _.padStart(date, 14, ' ')
+      }
+      else if(firstDay == 5){
+        return _.padStart(date, 19, ' ')
+      }
+      else if(firstDay == 6){
+        return _.padStart(date, 23, ' ')
+      }
+      
+    })
 
-    console.log(firstDay, lastDay, padDays)
-})
+
+
+    
+
+    console.log(paddedDays, firstDay)
+}
