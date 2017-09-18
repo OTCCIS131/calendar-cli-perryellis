@@ -31,29 +31,7 @@ for(const month of year. by('month'))
             date = chalk.green(date)
         }
 
-
-        
-      if(firstDay == 0){
-        return _.padEnd(date, 0, ' ')
-      }
-      else if(firstDay == 1){
-        return _.padStart(date, 2, ' ')
-      }
-      else if(firstDay == 2){
-        return _.padStart(date, 6, ' ')
-      }
-      else if(firstDay == 3){
-        return _.padStart(date, 10, ' ')
-      }
-      else if(firstDay == 4){
-        return _.padStart(date, 14, ' ')
-      }
-      else if(firstDay == 5){
-        return _.padStart(date, 19, ' ')
-      }
-      else if(firstDay == 6){
-        return _.padStart(date, 23, ' ')
-      }
+        return _.padEnd(date, 2)
 
     })
 
