@@ -17,7 +17,7 @@ for(const month of year.by('month'))
     let days =  Array.from(month.range('month').by('days'))
  
     let paddedDays = _.map(days, day => {
-        let date = day.date()
+        let date = day.format('DD')
         //Will highlight Adams bithday
         if (day.month() == 8 && day.date() == 10) {
             date = chalk.blue(date)
@@ -26,7 +26,7 @@ for(const month of year.by('month'))
         if (day.month() == 2 && day.date() == 5) {
             date = chalk.green(date)
         }
-        return _.padStart(date, 2 )
+   
         return _.padEnd(date, 2)  
     })
     //Will print the dates of the month 
